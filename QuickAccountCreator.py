@@ -1,5 +1,6 @@
 """
 Automated on boarding test
+
 """
 
 import unittest
