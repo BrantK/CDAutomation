@@ -1,6 +1,4 @@
-"""
-Automated on boarding test
-"""
+# Creates an account
 
 import unittest
 import cd_elements.elements as myDriver
