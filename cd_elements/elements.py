@@ -1,4 +1,4 @@
-# Cyber Dust Elements organized by class
+# Elements organized by class
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
