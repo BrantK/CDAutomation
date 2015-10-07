@@ -10,12 +10,10 @@ blast_type = "photo, video, text" # Use photo, video, text, or a combination of 
 blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com" # Only works for blast_type = text
 number_of_blasts = 3 # Number of blasts per type
 
-h = Home()
-
 
 class AutoBlast(unittest.TestCase):
     def test_blasts(self):
-
+        h = Home()
         def photo_blast():
             h.action_menu().click()
             h.action_menu_media().click()
