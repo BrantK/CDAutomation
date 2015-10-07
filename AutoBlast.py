@@ -39,7 +39,7 @@ class AutoBlast(unittest.TestCase):
             h.action_menu().click()
             h.action_menu_text().click()
             h.dust_blast_field().send_keys(blast_text)
-            h.blast_Ok_button().click()
+            h.OK_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()
             h.blast_Ok_button().click()

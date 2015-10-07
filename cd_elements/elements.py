@@ -144,6 +144,9 @@ class Home:
     def blast_Ok_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Ok")))
 
+    def OK_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
+
     def next_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
 
