@@ -15,6 +15,16 @@ desired_caps = {
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 
+class Standard:
+    def OK_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
+
+    def next_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
+
+    def back_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
+
 class SignUp:
     def sign_up_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_signup_button")))
@@ -116,6 +126,29 @@ class Home:
     def action_menu_close(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.FrameLayout[@index='7'][android.widget.ImageView[@index='0']]")))
 
+    def dust_blast_field(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/dust_blast_text_edit_text")))
+
+    def photo_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_take_picture")))
+
+    def video_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "VIDEO")))
+
+    def blast_friends(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_tab_friends")))
+
+    def blast_recipient(self, recipient):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, recipient)))
+
+    def OK_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
+
+    def next_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
+
+    def back_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
 
 class More:
     def back_button(self):
