@@ -47,6 +47,9 @@ class SignUp:
     def email(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_4_email_edit_text")))
 
+    def profile_picture(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_screen_4_1_profile_pic_layout")))
+
     def sign_up_OK(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
 
@@ -67,6 +70,12 @@ class SignUp:
 
     def done_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "done")))
+
+    def profile_picture_done(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
+
+    def camera_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
     def bday_scroll_1(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.NumberPicker[@index='2'][android.widget.Button[@index='0']]")))
@@ -154,11 +163,23 @@ class Home:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
 
 class More:
+    def more_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")))
+
     def back_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/home")))
 
     def profile_picture(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_fragment_picture")))
+
+    def remove_profile_picture(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
+
+    def change_profile_picture(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
+
+    def profile_picture_done(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
 
     def enter_bio(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_fragment_bio")))
@@ -228,3 +249,12 @@ class More:
 
     def delete_account(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_fragment_delete_account_row")))
+
+    def OK_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
+
+    def confirm(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
+
+    def cancel(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
