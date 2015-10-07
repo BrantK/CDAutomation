@@ -23,9 +23,9 @@ class OnBoardingTest(unittest.TestCase):
         s.pick_username().send_keys(account_name + "!@#$")
         try:
             s.sign_up_OK().click()
-            print("Warning: special character used in username.")
+            print("\nWarning: special characters used in username.")
         except TimeoutException:
-            print("Could not use special characters in username.")
+            print("\nCould not use special characters in username.")
         s.pick_username().send_keys(account_name)
         s.sign_up_OK().click()
         s.create_password().send_keys(account_pw)
