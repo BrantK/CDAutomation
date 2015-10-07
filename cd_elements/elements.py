@@ -25,6 +25,7 @@ class Standard:
     def back_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
 
+
 class SignUp:
     def sign_up_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_signup_button")))
@@ -51,7 +52,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_screen_4_1_profile_pic_layout")))
 
     def sign_up_OK(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
+        return WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
 
     def password_OK(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_2_ok_button")))
@@ -161,6 +162,7 @@ class Home:
 
     def back_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
+
 
 class More:
     def more_button(self):
