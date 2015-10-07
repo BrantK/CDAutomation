@@ -13,7 +13,7 @@ number_of_blasts = 3 # Number of blasts per type
 h = Home()
 
 
-class CDAutoBlast(unittest.TestCase):
+class AutoBlast(unittest.TestCase):
     def test_blasts(self):
 
         def photo_blast():
@@ -23,7 +23,7 @@ class CDAutoBlast(unittest.TestCase):
             h.next_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()
-            h.OK_button().click()
+            h.blast_Ok_button().click()
 
         def video_blast():
             h.action_menu().click()
@@ -33,16 +33,16 @@ class CDAutoBlast(unittest.TestCase):
             h.next_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()
-            h.OK_button().click()
+            h.blast_Ok_button().click()
 
         def text_blast():
             h.action_menu().click()
             h.action_menu_text().click()
             h.dust_blast_field().send_keys(blast_text)
-            h.OK_button().click()
+            h.blast_Ok_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()
-            h.OK_button().click()
+            h.blast_Ok_button().click()
 
         for i in range(number_of_blasts):
 
@@ -56,6 +56,8 @@ class CDAutoBlast(unittest.TestCase):
                 video_blast()
                 print("Sending video blast #%d" % (i+1))
 
+
+# ---START OF SCRIPT
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(CDAutoBlast)
+    suite = unittest.TestLoader().loadTestsFromTestCase(AutoBlast)
     unittest.TextTestRunner(verbosity=2).run(suite)
