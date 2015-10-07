@@ -29,7 +29,7 @@ class AutoBlast(unittest.TestCase):
             h.action_menu().click()
             h.action_menu_media().click()
             h.video_button().click()
-            TouchAction(myDriver.driver).long_press(myDriver.driver.h.photo_button(), duration=8000).release().perform()
+            TouchAction(myDriver.driver).long_press(h.photo_button(), duration=8000).release().perform()
             h.next_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()
