@@ -5,9 +5,9 @@ import cd_elements.elements as myDriver
 from cd_elements.elements import SignUp
 from time import sleep
 
-account_name = "onboardtest01"
+account_name = "testuser01"
 account_pw = "testuser01"
-account_email = "onboard01@cyberdust.com"
+account_email = "testuser01@cyberdust.com"
 
 
 class AccountCreator(unittest.TestCase):
