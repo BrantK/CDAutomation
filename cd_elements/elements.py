@@ -142,6 +142,12 @@ class Home:
     def photo_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_take_picture")))
 
+    def photo_pen(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/pen")))
+
+    def photo_add_text(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_add_text")))
+
     def video_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "VIDEO")))
 
@@ -159,6 +165,9 @@ class Home:
 
     def next_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
+
+    def done_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "done")))
 
     def back_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
