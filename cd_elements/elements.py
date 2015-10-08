@@ -88,13 +88,19 @@ class Home:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/login_frag_ok_button")))
 
     def dusts_tab(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/actionbar_tab_text[@text='DUSTS']")))
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "DUSTS")))
+
+    def new_dust(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/tap_to_compose_button")))
 
     def blasts_tab(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/actionbar_tab_text[@text='BLASTS']")))
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, 'BLASTS')))
 
     def groups_tab(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/actionbar_tab_text[@text='GROUPS']")))
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, 'GROUPS')))
+
+    def card_view(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/card_view")))
 
     def more_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")))
