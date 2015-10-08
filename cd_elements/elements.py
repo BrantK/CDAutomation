@@ -7,6 +7,7 @@ from appium import webdriver
 
 # Desired capabilities and driver
 desired_caps = {
+    'launchApp'      : 'false',
     'platformName'   : 'Android',
     'platformVersion': '',
     'deviceName'     : '',
@@ -147,6 +148,9 @@ class Home:
 
     def photo_add_text(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_add_text")))
+
+    def photo_add_text_field(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/edit_text_overlay")))
 
     def video_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "VIDEO")))
