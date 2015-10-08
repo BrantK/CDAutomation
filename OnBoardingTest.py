@@ -1,13 +1,14 @@
-# Automated on boarding test....
+# Automated on boarding test
 
 import unittest
 import cd_elements.elements as myDriver
 from cd_elements.elements import SignUp, More, Login
+from selenium.common.exceptions import TimeoutException
 from time import sleep
 
-account_name = "onboardtest999"
-account_pw = "onboardtest999"
-account_email = "onboard999@cyberdust.com"
+account_name = "onboardtest001"
+account_pw = "onboardtest001"
+account_email = "onboard001@cyberdust.com"
 
 
 class OnBoardingTest(unittest.TestCase):
@@ -17,8 +18,14 @@ class OnBoardingTest(unittest.TestCase):
         l = Login()
         print("\nStarting on boarding test")
 
-        # Creates a new account
+        # Creates a new account and tests if special characters can be used
         s.sign_up_button().click()
+        s.pick_username().send_keys(account_name + "!@#$")
+        try:
+            s.sign_up_OK().click()
+            print("\nWarning: special characters used in username.")
+        except TimeoutException:
+            print("\nCould not use special characters in username.")
         s.pick_username().send_keys(account_name)
         s.sign_up_OK().click()
         s.create_password().send_keys(account_pw)
@@ -77,10 +84,7 @@ class OnBoardingTest(unittest.TestCase):
         m.delete_account().click()
         m.confirm().click()
 
-
-
-#---START OF SCRIPT
+# ---START OF SCRIPT
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(OnBoardingTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
-    #unittest.main(exit=False)
