@@ -1,13 +1,13 @@
 # Creates an account
 
 import unittest
-import cd_elements.elements as myDriver
+import cd_elements.elements as eDriver
 from cd_elements.elements import SignUp
 from time import sleep
 
-account_name = "testuser01"
-account_pw = "testuser01"
-account_email = "testuser01@cyberdust.com"
+account_name = "testuser999"
+account_pw = "testuser999"
+account_email = "testuser999@cyberdust.com"
 
 
 class AccountCreator(unittest.TestCase):
@@ -25,7 +25,7 @@ class AccountCreator(unittest.TestCase):
 
         # Scrolls through and sets birthday
         for i in range(7):
-            myDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+            eDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
         s.birthday_set().click()
         s.birthday_OK().click()
 

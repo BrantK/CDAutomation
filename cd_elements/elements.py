@@ -7,24 +7,12 @@ from appium import webdriver
 
 # Desired capabilities and driver
 desired_caps = {
-    'launchApp'      : 'false',
     'platformName'   : 'Android',
     'platformVersion': '',
     'deviceName'     : '',
     'appPackage'     : 'com.radicalapps.cyberdust',
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-
-
-class Standard:
-    def OK_button(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
-
-    def next_button(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
-
-    def back_button(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
 
 
 class SignUp:
@@ -86,7 +74,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
 
 
-class Login:
+class Home:
     def login_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_login_button")))
 
@@ -99,8 +87,6 @@ class Login:
     def login_OK(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/login_frag_ok_button")))
 
-
-class Home:
     def dusts_tab(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/actionbar_tab_text[@text='DUSTS']")))
 
@@ -178,6 +164,18 @@ class Home:
 
 
 class More:
+    def login_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_login_button")))
+
+    def login_username(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/login_frag_username_edit_text")))
+
+    def login_password(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/login_frag_password_edit_text")))
+
+    def login_OK(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/login_frag_ok_button")))
+
     def more_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")))
 
@@ -273,3 +271,4 @@ class More:
 
     def cancel(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
+

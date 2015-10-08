@@ -1,8 +1,8 @@
 # Automated on boarding test....
 
 import unittest
-import cd_elements.elements as myDriver
-from cd_elements.elements import SignUp, More, Login
+import cd_elements.elements as eDriver
+from cd_elements.elements import SignUp, More
 from selenium.common.exceptions import TimeoutException
 from time import sleep
 
@@ -13,9 +13,8 @@ account_email = "onboard001@cyberdust.com"
 
 class OnBoardingTest(unittest.TestCase):
     def test_on_boarding(self):
-        s = SignUp()
         m = More()
-        l = Login()
+        s = SignUp()
         print("\nStarting on boarding test")
 
         # Creates a new account and tests if special characters can be used
@@ -35,7 +34,7 @@ class OnBoardingTest(unittest.TestCase):
 
         # Scrolls through and sets birthday
         for i in range(7):
-            myDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+            eDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
         s.birthday_set().click()
         s.birthday_OK().click()
 
@@ -48,7 +47,7 @@ class OnBoardingTest(unittest.TestCase):
         s.profile_picture().click()
         s.camera_button().click(), sleep(2)
         # For the Moto X and Moto G - self.driver.find_element_by_id("com.motorola.camera:id/preview_surface").click()
-        myDriver.driver.press_keycode(27)  # Takes picture using Android keycode and not tapping a button
+        eDriver.driver.press_keycode(27)  # Takes picture using Android keycode and not tapping a button
         s.OK_button().click()
         s.profile_picture_done().click(), sleep(3)
         s.OK_button().click()
@@ -64,22 +63,22 @@ class OnBoardingTest(unittest.TestCase):
         m.profile_picture().click()
         m.change_profile_picture().click()
         s.camera_button().click(), sleep(2)
-        myDriver.driver.press_keycode(27)
+        eDriver.driver.press_keycode(27)
         m.OK_button().click()
         m.profile_picture_done().click(), sleep(3)
 
         # Logout and login
-        myDriver.driver.scroll(m.add_friends(), m.back_button())
+        eDriver.driver.scroll(m.add_friends(), m.back_button())
         m.logout().click()
         m.confirm().click()
-        l.login_button().click()
-        l.login_username().send_keys(account_name.upper())
-        l.login_password().send_keys(account_pw)
-        l.login_OK().click()
+        m.login_button().click()
+        m.login_username().send_keys(account_name.upper())
+        m.login_password().send_keys(account_pw)
+        m.login_OK().click()
 
         # Deletes account
         m.more_button().click(), sleep(1)
-        myDriver.driver.scroll(m.add_friends(), m.back_button())
+        eDriver.driver.scroll(m.add_friends(), m.back_button())
         print("\nDeleting account")
         m.delete_account().click()
         m.confirm().click()
