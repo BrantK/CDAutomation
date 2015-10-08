@@ -1,7 +1,7 @@
 # Creates an account
 
 import unittest
-import cd_elements.elements as eDriver
+import cd_elements.elements as wd
 from cd_elements.elements import SignUp
 from time import sleep
 
@@ -25,7 +25,7 @@ class AccountCreator(unittest.TestCase):
 
         # Scrolls through and sets birthday
         for i in range(7):
-            eDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+            wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
         s.birthday_set().click()
         s.birthday_OK().click()
 
