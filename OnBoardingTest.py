@@ -1,7 +1,7 @@
 # Automated on boarding test....
 
 import unittest
-import cd_elements.elements as eDriver
+import cd_elements.elements as wd
 from cd_elements.elements import SignUp, More
 from selenium.common.exceptions import TimeoutException
 from time import sleep
@@ -34,7 +34,7 @@ class OnBoardingTest(unittest.TestCase):
 
         # Scrolls through and sets birthday
         for i in range(7):
-            eDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+            wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
         s.birthday_set().click()
         s.birthday_OK().click()
 
@@ -47,7 +47,7 @@ class OnBoardingTest(unittest.TestCase):
         s.profile_picture().click()
         s.camera_button().click(), sleep(2)
         # For the Moto X and Moto G - self.driver.find_element_by_id("com.motorola.camera:id/preview_surface").click()
-        eDriver.driver.press_keycode(27)  # Takes picture using Android keycode and not tapping a button
+        wd.driver.press_keycode(27)  # Takes picture using Android keycode and not tapping a button
         s.OK_button().click()
         s.profile_picture_done().click(), sleep(3)
         s.OK_button().click()
@@ -63,12 +63,12 @@ class OnBoardingTest(unittest.TestCase):
         m.profile_picture().click()
         m.change_profile_picture().click()
         s.camera_button().click(), sleep(2)
-        eDriver.driver.press_keycode(27)
+        wd.driver.press_keycode(27)
         m.OK_button().click()
         m.profile_picture_done().click(), sleep(3)
 
         # Logout and login
-        eDriver.driver.scroll(m.add_friends(), m.back_button())
+        wd.driver.scroll(m.add_friends(), m.back_button())
         m.logout().click()
         m.confirm().click()
         m.login_button().click()
@@ -78,7 +78,7 @@ class OnBoardingTest(unittest.TestCase):
 
         # Deletes account
         m.more_button().click(), sleep(1)
-        eDriver.driver.scroll(m.add_friends(), m.back_button())
+        wd.driver.scroll(m.add_friends(), m.back_button())
         print("\nDeleting account")
         m.delete_account().click()
         m.confirm().click()
