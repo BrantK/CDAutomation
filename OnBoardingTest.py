@@ -4,6 +4,7 @@ import unittest
 import cd_elements.elements as wd
 from cd_elements.elements import SignUp, More
 from selenium.common.exceptions import TimeoutException
+from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 
 account_name = "onboardtest001"
@@ -22,9 +23,9 @@ class OnBoardingTest(unittest.TestCase):
         s.pick_username().send_keys(account_name + "!@#$")
         try:
             s.sign_up_OK().click()
-            print("\nWarning: special characters used in username.")
+            print("\nWarning: special characters used in username")
         except TimeoutException:
-            print("\nCould not use special characters in username.")
+            print("\nCould not use special characters in username")
         s.pick_username().send_keys(account_name)
         s.sign_up_OK().click()
         s.create_password().send_keys(account_pw)
@@ -32,10 +33,9 @@ class OnBoardingTest(unittest.TestCase):
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
-        # Scrolls through and sets birthday
-        for i in range(7):
-            wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
-        s.birthday_set().click()
+        # Sets birthday
+        TouchAction(wd.driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        s.birthday_done().click()
         s.birthday_OK().click()
 
         # Enters email
@@ -43,45 +43,75 @@ class OnBoardingTest(unittest.TestCase):
         s.email_OK().click()
         s.OK_button().click()
 
-        # Takes a picture with camera and sets as profile picture (Works for Note 4)
+        # Takes a picture with camera and sets as profile picture
         s.profile_picture().click()
-        s.camera_button().click(), sleep(2)
-        # For the Moto X and Moto G - self.driver.find_element_by_id("com.motorola.camera:id/preview_surface").click()
-        wd.driver.press_keycode(27)  # Takes picture using Android keycode and not tapping a button
-        s.OK_button().click()
+        s.camera_button().click(), sleep(3)
+        wd.driver.press_keycode(25), sleep(1), wd.driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
+        try:
+            wd.driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
+        except:
+            pass
+        try:
+            wd.driver.find_element_by_id("com.android.camera:id/select_this")  # For older HTC one phones
+        except:
+            pass
+        try:
+            TouchAction(wd.driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+        except:
+            pass
+        try:
+            wd.driver.find_element_by_name("OK").click()  # For Galaxy phones
+        except:
+            pass
         s.profile_picture_done().click(), sleep(3)
         s.OK_button().click()
-
-        # Skips adding contacts and phone number validation
-        for i in range(2):
-            s.skip_button().click()
+        s.skip_button().click()
         s.done_button().click()
-        print("\nStarting logout and login test")
+
+        print("\nAccount created")
 
         # Changes profile picture
         m.more_button().click()
         m.profile_picture().click()
         m.change_profile_picture().click()
-        s.camera_button().click(), sleep(2)
-        wd.driver.press_keycode(27)
-        m.OK_button().click()
+        s.camera_button().click(), sleep(3)
+        wd.driver.press_keycode(25), wd.driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
+        try:
+            wd.driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
+        except:
+            pass
+        try:
+            wd.driver.find_element_by_id("com.android.camera:id/select_this")  # For older HTC one phones
+        except:
+            pass
+        try:
+            TouchAction(wd.driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+        except:
+            pass
+        try:
+            wd.driver.find_element_by_name("OK").click()  # For Galaxy phones
+        except:
+            pass
         m.profile_picture_done().click(), sleep(3)
 
+        print("\nProfile picture updated")
+
         # Logout and login
-        wd.driver.scroll(m.add_friends(), m.back_button())
+        wd.driver.scroll(m.friends(), m.back_button())
         m.logout().click()
         m.confirm().click()
         m.login_button().click()
         m.login_username().send_keys(account_name.upper())
         m.login_password().send_keys(account_pw)
         m.login_OK().click()
+        print("\nUsername is not case sensitive")
 
         # Deletes account
         m.more_button().click(), sleep(1)
-        wd.driver.scroll(m.add_friends(), m.back_button())
-        print("\nDeleting account")
+        wd.driver.scroll(m.friends(), m.back_button())
         m.delete_account().click()
         m.confirm().click()
+        print("\nAccount deleted")
 
 # ---START OF SCRIPT
 if __name__ == '__main__':
