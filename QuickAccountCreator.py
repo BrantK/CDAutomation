@@ -3,6 +3,7 @@
 import unittest
 import cd_elements.elements as wd
 from cd_elements.elements import SignUp
+from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 
 account_name = "testuser999"
@@ -23,11 +24,12 @@ class AccountCreator(unittest.TestCase):
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
+        TouchAction(wd.driver).long_press(x=s.bday_scroll_1().location['x'], y=s.bday_scroll_1().location['y'], duration=3000).release().perform()
         # Scrolls through and sets birthday
-        for i in range(7):
-            wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
-        s.birthday_set().click()
-        s.birthday_OK().click()
+        #for i in range(7):
+        #    wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+        s.birthday_done().click()
+        #s.birthday_OK().click()
 
         # Enters email
         s.email().send_keys(account_email)
