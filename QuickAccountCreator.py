@@ -24,12 +24,9 @@ class AccountCreator(unittest.TestCase):
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
-        TouchAction(wd.driver).long_press(x=s.bday_scroll_1().location['x'], y=s.bday_scroll_1().location['y'], duration=3000).release().perform()
-        # Scrolls through and sets birthday
-        #for i in range(7):
-        #    wd.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
+        TouchAction(wd.driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
         s.birthday_done().click()
-        #s.birthday_OK().click()
+        s.birthday_OK().click()
 
         # Enters email
         s.email().send_keys(account_email)
