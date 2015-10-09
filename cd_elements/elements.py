@@ -67,11 +67,8 @@ class SignUp:
     def camera_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
-    def bday_scroll_1(self):
+    def date(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.NumberPicker[@index='2'][android.widget.Button]")))
-
-    def bday_scroll_2(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
 
 
 class Home:
@@ -208,6 +205,9 @@ class More:
 
     def change_profile_picture(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
+
+    def camera_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
     def profile_picture_done(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
