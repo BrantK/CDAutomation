@@ -34,7 +34,7 @@ class AccountCreator(unittest.TestCase):
         s.OK_button().click()
 
         # Skips remaining on boarding
-        for i in range(3):
+        for i in range(2):
             s.skip_button().click()
         s.done_button().click()
 
