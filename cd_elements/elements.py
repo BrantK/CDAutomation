@@ -31,7 +31,7 @@ class SignUp:
     def birthday(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_3_date_edit_text")))
 
-    def birthday_set(self):
+    def birthday_done(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
 
     def email(self):
@@ -41,7 +41,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_screen_4_1_profile_pic_layout")))
 
     def sign_up_OK(self):
-        return WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
+        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
 
     def password_OK(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_2_ok_button")))
@@ -68,7 +68,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
     def bday_scroll_1(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.NumberPicker[@index='2'][android.widget.Button[@index='0']]")))
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.NumberPicker[@index='2'][android.widget.Button]")))
 
     def bday_scroll_2(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
