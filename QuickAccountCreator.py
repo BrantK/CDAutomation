@@ -1,4 +1,4 @@
-# Creates an account asdasdads
+# Creates an account
 
 import unittest
 import cd_elements.elements as eDriver
