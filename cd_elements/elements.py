@@ -135,6 +135,9 @@ class Home:
     def photo_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_take_picture")))
 
+    def photo_flip(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_flip_camera")))
+
     def photo_pen(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/pen")))
 
@@ -144,8 +147,20 @@ class Home:
     def photo_add_text_field(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/edit_text_overlay")))
 
+    def photo_color(self):
+        return  WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/picker")))
+
+    def photo_back_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_back")))
+
     def video_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "VIDEO")))
+
+    def location_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/location")))
+
+    def next_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_next")))
 
     def blast_friends(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_tab_friends")))
@@ -158,9 +173,6 @@ class Home:
 
     def OK_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "OK")))
-
-    def next_button(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "next")))
 
     def done_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "done")))
