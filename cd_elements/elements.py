@@ -7,7 +7,6 @@ from appium import webdriver
 
 # Desired capabilities and driver
 desired_caps = {
-    'launchApp'      : 'false',
     'platformName'   : 'Android',
     'platformVersion': '',
     'deviceName'     : '',
