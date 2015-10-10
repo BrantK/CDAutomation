@@ -12,7 +12,12 @@ desired_caps = {
     'deviceName'     : '',
     'appPackage'     : 'com.radicalapps.cyberdust',
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
-driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+
+# This lets you set the port from the script to be able to run multiple servers
+def WebDriverPort(port):
+    global driver
+    driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
+    return driver
 
 
 class SignUp:
