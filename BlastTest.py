@@ -2,10 +2,9 @@
 
 import unittest
 from cd_elements.elements import WebDriver, Home
-from selenium.common.exceptions import TimeoutException
 from time import sleep
 
-driver = WebDriver(4723)
+driver = WebDriver()
 
 blast_recipient = ""
 blast_text = ""
@@ -28,7 +27,6 @@ class BlastTest(unittest.TestCase):
         #h.photo_add_text_field().send_keys("Test test test")
         #h.done_button().click()
         #h.next_button().click()
-
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(BlastTest)

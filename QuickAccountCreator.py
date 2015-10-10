@@ -2,10 +2,10 @@
 
 import unittest
 from cd_elements.elements import WebDriver, SignUp
-from appium.webdriver.common.touch_action import TouchAction
+from appium.webdriver.common.touch_action import ta
 from time import sleep
 
-driver = WebDriver(4723)
+driver = WebDriver()
 
 account_name = "testuser999"
 account_pw = "testuser999"
@@ -25,7 +25,7 @@ class AccountCreator(unittest.TestCase):
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
-        TouchAction(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        ta(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
         s.birthday_done().click()
         s.birthday_OK().click()
 
@@ -39,8 +39,6 @@ class AccountCreator(unittest.TestCase):
             s.skip_button().click()
         s.done_button().click()
 
-
-# ---START OF SCRIPT
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(AccountCreator)
     unittest.TextTestRunner(verbosity=2).run(suite)

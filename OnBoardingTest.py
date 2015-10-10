@@ -2,10 +2,10 @@
 
 import unittest
 from cd_elements.elements import WebDriver, SignUp, More
-from appium.webdriver.common.touch_action import TouchAction
+from appium.webdriver.common.touch_action import TouchAction as ta
 from time import sleep
 
-driver = WebDriver(4723)
+driver = WebDriver()
 
 account_name = "onboardtest001"
 account_pw = "onboardtest001"
@@ -34,7 +34,7 @@ class OnBoardingTest(unittest.TestCase):
         s.birthday().click(), sleep(2)
 
         # Sets birthday
-        TouchAction(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        ta(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
         s.birthday_done().click()
         s.birthday_OK().click()
 
@@ -56,7 +56,7 @@ class OnBoardingTest(unittest.TestCase):
         except:
             pass
         try:
-            TouchAction(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+            ta(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
         except:
             pass
         try:
@@ -85,7 +85,7 @@ class OnBoardingTest(unittest.TestCase):
         except:
             pass
         try:
-            TouchAction(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+            ta(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
         except:
             pass
         try:
@@ -114,7 +114,6 @@ class OnBoardingTest(unittest.TestCase):
         print("\nAccount deleted")
         print("\nOn boarding test completed")
 
-# ---START OF SCRIPT
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(OnBoardingTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
