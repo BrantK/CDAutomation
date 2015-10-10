@@ -13,11 +13,13 @@ desired_caps = {
     'appPackage'     : 'com.radicalapps.cyberdust',
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
 
-# This lets you set the port from the script to be able to run multiple servers
+# This lets you set the port and device id from the script to be able to run multiple sessions at once
 def WebDriverPort(port):
     global driver
     driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
     return driver
+def DeviceID(device):
+    return desired_caps.update({'udid':device})
 
 
 class SignUp:
