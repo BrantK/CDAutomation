@@ -14,7 +14,7 @@ desired_caps = {
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
 
 # This lets you set the port and device id from the script to be able to run multiple sessions at once
-def WebDriver(port):
+def WebDriver(port=4723):
     global driver
     driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
     return driver
