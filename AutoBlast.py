@@ -1,14 +1,16 @@
 # Sends out blasts to specified recipients
 
 import unittest
-import cd_elements.elements as wd
+from cd_elements.elements import WebDriverPort
 from cd_elements.elements import Home
 from appium.webdriver.common.touch_action import TouchAction
 
+driver = WebDriverPort(4723)
+
 blast_recipient = "bktest01"
-blast_type = "photo, video, text" # Use photo, video, text, or a combination of the 3
-blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com" # Only works for blast_type = text
-number_of_blasts = 3 # Number of blasts per type
+blast_type = "photo, video, text"  # Use photo, video, text, or a combination of the 3
+blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com"  # Only works for blast_type = text
+number_of_blasts = 3  # Number of blasts per type
 
 
 class AutoBlast(unittest.TestCase):
@@ -27,7 +29,7 @@ class AutoBlast(unittest.TestCase):
             h.action_menu().click()
             h.action_menu_media().click()
             h.video_button().click()
-            TouchAction(wd.driver).long_press(h.photo_button(), duration=8000).release().perform()
+            TouchAction(driver).long_press(h.photo_button(), duration=8000).release().perform()
             h.next_button().click()
             h.blast_friends().click()
             h.blast_recipient(blast_recipient).click()

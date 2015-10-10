@@ -1,10 +1,12 @@
 # Creates an account
 
 import unittest
-import cd_elements.elements as wd
+from cd_elements.elements import WebDriverPort
 from cd_elements.elements import SignUp
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
+
+driver = WebDriverPort(4723)
 
 account_name = "testuser999"
 account_pw = "testuser999"
@@ -24,7 +26,7 @@ class AccountCreator(unittest.TestCase):
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
-        TouchAction(wd.driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        TouchAction(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
         s.birthday_done().click()
         s.birthday_OK().click()
 

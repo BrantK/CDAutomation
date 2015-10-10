@@ -1,11 +1,12 @@
 # Automated on boarding test....
 
 import unittest
-import cd_elements.elements as wd
+from cd_elements.elements import WebDriverPort
 from cd_elements.elements import SignUp, More
-from selenium.common.exceptions import TimeoutException
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
+
+driver = WebDriverPort(4723)
 
 account_name = "onboardtest001"
 account_pw = "onboardtest001"
@@ -24,7 +25,7 @@ class OnBoardingTest(unittest.TestCase):
         try:
             s.sign_up_OK().click()
             print("\nWarning: special characters used in username")
-        except TimeoutException:
+        except Exception:
             print("\nCould not use special characters in username")
         s.pick_username().send_keys(account_name)
         s.sign_up_OK().click()
@@ -34,7 +35,7 @@ class OnBoardingTest(unittest.TestCase):
         s.birthday().click(), sleep(2)
 
         # Sets birthday
-        TouchAction(wd.driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        TouchAction(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
         s.birthday_done().click()
         s.birthday_OK().click()
 
@@ -46,21 +47,21 @@ class OnBoardingTest(unittest.TestCase):
         # Takes a picture with camera and sets as profile picture
         s.profile_picture().click()
         s.camera_button().click(), sleep(3)
-        wd.driver.press_keycode(25), sleep(1), wd.driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
+        driver.press_keycode(25), sleep(1), driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
         try:
-            wd.driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
+            driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
         except:
             pass
         try:
-            wd.driver.find_element_by_id("com.android.camera:id/select_this")  # For older HTC one phones
+            driver.find_element_by_id("com.android.camera:id/select_this").click()  # For older HTC one phones
         except:
             pass
         try:
-            TouchAction(wd.driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+            TouchAction(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
         except:
             pass
         try:
-            wd.driver.find_element_by_name("OK").click()  # For Galaxy phones
+            driver.find_element_by_name("OK").click()  # For Galaxy phones
         except:
             pass
         s.profile_picture_done().click(), sleep(3)
@@ -75,21 +76,21 @@ class OnBoardingTest(unittest.TestCase):
         m.profile_picture().click()
         m.change_profile_picture().click()
         s.camera_button().click(), sleep(3)
-        wd.driver.press_keycode(25), wd.driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
+        driver.press_keycode(25), driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
         try:
-            wd.driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
+            driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
         except:
             pass
         try:
-            wd.driver.find_element_by_id("com.android.camera:id/select_this")  # For older HTC one phones
+            driver.find_element_by_id("com.android.camera:id/select_this").click()  # For older HTC one phones
         except:
             pass
         try:
-            TouchAction(wd.driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
+            TouchAction(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
         except:
             pass
         try:
-            wd.driver.find_element_by_name("OK").click()  # For Galaxy phones
+            driver.find_element_by_name("OK").click()  # For Galaxy phones
         except:
             pass
         m.profile_picture_done().click(), sleep(3)
@@ -97,7 +98,7 @@ class OnBoardingTest(unittest.TestCase):
         print("\nProfile picture updated")
 
         # Logout and login
-        wd.driver.scroll(m.friends(), m.back_button())
+        driver.scroll(m.friends(), m.back_button())
         m.logout().click()
         m.confirm().click()
         m.login_button().click()
@@ -108,10 +109,11 @@ class OnBoardingTest(unittest.TestCase):
 
         # Deletes account
         m.more_button().click(), sleep(1)
-        wd.driver.scroll(m.friends(), m.back_button())
+        driver.scroll(m.friends(), m.back_button())
         m.delete_account().click()
         m.confirm().click()
         print("\nAccount deleted")
+        print("\nOn boarding test completed")
 
 # ---START OF SCRIPT
 if __name__ == '__main__':
