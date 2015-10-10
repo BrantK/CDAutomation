@@ -1,11 +1,11 @@
 # Automated on boarding test....
 
 import unittest
-from cd_elements.elements import WebDriverPort, SignUp, More
+from cd_elements.elements import WebDriver, SignUp, More
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 
-driver = WebDriverPort(4723)
+driver = WebDriver(4723)
 
 account_name = "onboardtest001"
 account_pw = "onboardtest001"

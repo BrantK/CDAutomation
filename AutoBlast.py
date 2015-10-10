@@ -1,10 +1,10 @@
 # Sends out blasts to specified recipients
 
 import unittest
-from cd_elements.elements import WebDriverPort, Home
+from cd_elements.elements import WebDriver, Home
 from appium.webdriver.common.touch_action import TouchAction
 
-driver = WebDriverPort(4723)
+driver = WebDriver(4723)
 
 blast_recipient = "bktest01"
 blast_type = "photo, video, text"  # Use photo, video, text, or a combination of the 3

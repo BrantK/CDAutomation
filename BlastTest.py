@@ -1,11 +1,11 @@
 # Automated blast test
 
 import unittest
-from cd_elements.elements import WebDriverPort, Home
+from cd_elements.elements import WebDriver, Home
 from selenium.common.exceptions import TimeoutException
 from time import sleep
 
-driver = WebDriverPort(4723)
+driver = WebDriver(4723)
 
 blast_recipient = ""
 blast_text = ""
