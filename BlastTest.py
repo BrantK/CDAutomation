@@ -1,8 +1,7 @@
 # Automated blast test
 
 import unittest
-from cd_elements.elements import WebDriverPort
-from cd_elements.elements import Home
+from cd_elements.elements import WebDriverPort, Home
 from selenium.common.exceptions import TimeoutException
 from time import sleep
 

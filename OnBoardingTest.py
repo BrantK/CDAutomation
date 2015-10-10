@@ -1,8 +1,7 @@
 # Automated on boarding test....
 
 import unittest
-from cd_elements.elements import WebDriverPort
-from cd_elements.elements import SignUp, More
+from cd_elements.elements import WebDriverPort, SignUp, More
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 

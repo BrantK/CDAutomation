@@ -1,8 +1,7 @@
 # Creates an account
 
 import unittest
-from cd_elements.elements import WebDriverPort
-from cd_elements.elements import SignUp
+from cd_elements.elements import WebDriverPort, SignUp
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 

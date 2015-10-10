@@ -1,8 +1,7 @@
 # Sends out blasts to specified recipients
 
 import unittest
-from cd_elements.elements import WebDriverPort
-from cd_elements.elements import Home
+from cd_elements.elements import WebDriverPort, Home
 from appium.webdriver.common.touch_action import TouchAction
 
 driver = WebDriverPort(4723)
