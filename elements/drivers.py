@@ -1,11 +1,12 @@
 # Elements organized by class
 
+import sys
+from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from appium import webdriver
 
-# Desired capabilities and driver
+# Desired capabilities
 desired_caps = {
     'platformName'   : 'Android',
     'platformVersion': '',
@@ -13,13 +14,25 @@ desired_caps = {
     'appPackage'     : 'com.radicalapps.cyberdust',
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
 
-# This lets you set the port and device id from the script to be able to run multiple sessions at once
-def WebDriver(port=4723):
-    global driver
-    driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
-    return driver
-def DeviceID(device):
-    return desired_caps.update({'udid':device})
+
+# Set the port and unique device id from the command line with -p and -udid or set it inside the test script
+class WebDriver:
+    DefaultPort = 4723
+
+    def driver(self, port=sys.argv):
+        if len(sys.argv) == 1:
+            port = self.DefaultPort
+        elif len(sys.argv) == 3 and sys.argv[1] == '-p':
+            port = sys.argv[2]
+        elif len(sys.argv) == 3 and sys.argv[1] == '-udid':
+            desired_caps.update({'udid': str(sys.argv[2])})
+            port = self.DefaultPort
+        elif len(sys.argv) == 5 and sys.argv[1] == '-p' and sys.argv[3] == '-udid':
+            desired_caps.update({'udid': str(sys.argv[4])})
+            port = sys.argv[2]
+        return webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
+
+driver = WebDriver().driver()
 
 
 class SignUp:
