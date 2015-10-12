@@ -1,11 +1,11 @@
 # Automated on boarding test....
 
 import unittest
-from cd_elements.elements import WebDriver, SignUp, More
-from appium.webdriver.common.touch_action import TouchAction as ta
 from time import sleep
+from elements.drivers import WebDriver, SignUp, More
+from appium.webdriver.common.touch_action import TouchAction as ta
 
-driver = WebDriver()
+driver = WebDriver().driver()
 
 account_name = "onboardtest001"
 account_pw = "onboardtest001"
@@ -49,19 +49,19 @@ class OnBoardingTest(unittest.TestCase):
         driver.press_keycode(25), sleep(1), driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
         try:
             driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
-        except:
+        except Exception:
             pass
         try:
             driver.find_element_by_id("com.android.camera:id/select_this").click()  # For older HTC one phones
-        except:
+        except Exception:
             pass
         try:
             ta(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
-        except:
+        except Exception:
             pass
         try:
             driver.find_element_by_name("OK").click()  # For Galaxy phones
-        except:
+        except Exception:
             pass
         s.profile_picture_done().click(), sleep(3)
         s.OK_button().click()
@@ -78,19 +78,19 @@ class OnBoardingTest(unittest.TestCase):
         driver.press_keycode(25), driver.press_keycode(27), sleep(5)  # Takes picture using Android keycode
         try:
             driver.find_element_by_id("com.motorola.camera:id/review_approve").click()  # For Moto phones
-        except:
+        except Exception:
             pass
         try:
             driver.find_element_by_id("com.android.camera:id/select_this").click()  # For older HTC one phones
-        except:
+        except Exception:
             pass
         try:
             ta(driver).press(x=1660, y=530).release().perform()  # For new HTC One phones
-        except:
+        except Exception:
             pass
         try:
             driver.find_element_by_name("OK").click()  # For Galaxy phones
-        except:
+        except Exception:
             pass
         m.profile_picture_done().click(), sleep(3)
 

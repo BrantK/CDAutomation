@@ -1,11 +1,11 @@
 # Creates an account
 
 import unittest
-from cd_elements.elements import WebDriver, SignUp
-from appium.webdriver.common.touch_action import ta
 from time import sleep
+from elements.drivers import WebDriver, SignUp
+from appium.webdriver.common.touch_action import TouchAction as ta
 
-driver = WebDriver()
+driver = WebDriver().driver()
 
 account_name = "testuser999"
 account_pw = "testuser999"

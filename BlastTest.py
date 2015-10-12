@@ -1,10 +1,10 @@
 # Automated blast test
 
 import unittest
-from cd_elements.elements import WebDriver, Home
 from time import sleep
+from elements.drivers import WebDriver, Home
 
-driver = WebDriver()
+driver = WebDriver().driver()
 
 blast_recipient = ""
 blast_text = ""
