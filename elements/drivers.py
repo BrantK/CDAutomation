@@ -1,6 +1,7 @@
 # Elements organized by class
 
 import sys
+from sys import argv
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,9 +20,9 @@ desired_caps = {
 class WebDriver:
     def __init__(self, DefaultPort=4723):
         self.DefaultPort = DefaultPort
-        self.port = DefaultPort
 
     def driver(self, port=sys.argv):
+        port = self.DefaultPort
         if len(sys.argv) == 1:
             port = self.DefaultPort
         elif len(sys.argv) == 3 and sys.argv[1] == '-p':
@@ -32,9 +33,9 @@ class WebDriver:
         elif len(sys.argv) == 5 and sys.argv[1] == '-p' and sys.argv[3] == '-udid':
             desired_caps.update({'udid': str(sys.argv[4])})
             port = sys.argv[2]
-        return webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-
-driver = WebDriver().driver()
+        global driver
+        driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
+        return driver
 
 
 class SignUp:
