@@ -17,7 +17,9 @@ desired_caps = {
 
 # Set the port and unique device id from the command line with -p and -udid or set it inside the test script
 class WebDriver:
-    DefaultPort = 4723
+    def __init__(self, DefaultPort=4723):
+        self.DefaultPort = DefaultPort
+        self.port = DefaultPort
 
     def driver(self, port=sys.argv):
         if len(sys.argv) == 1:
@@ -30,7 +32,7 @@ class WebDriver:
         elif len(sys.argv) == 5 and sys.argv[1] == '-p' and sys.argv[3] == '-udid':
             desired_caps.update({'udid': str(sys.argv[4])})
             port = sys.argv[2]
-        return webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
+        return webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 driver = WebDriver().driver()
 
