@@ -7,9 +7,9 @@ from appium.webdriver.common.touch_action import TouchAction as ta
 
 driver = WebDriver().driver()
 
-account_name = "testuser999"
-account_pw = "testuser999"
-account_email = "testuser999@cyberdust.com"
+account_name = "blasttest02"
+account_pw = "blasttest02"
+account_email = "blasttest02@cyberdust.com"
 
 
 class AccountCreator(unittest.TestCase):

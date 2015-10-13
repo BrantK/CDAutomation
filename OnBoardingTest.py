@@ -5,8 +5,6 @@ from time import sleep
 from elements.drivers import WebDriver, SignUp, More
 from appium.webdriver.common.touch_action import TouchAction as ta
 
-driver = WebDriver().driver()
-
 account_name = "onboardtest001"
 account_pw = "onboardtest001"
 account_email = "onboard001@cyberdust.com"
@@ -16,6 +14,7 @@ class OnBoardingTest(unittest.TestCase):
     def test_on_boarding(self):
         m = More()
         s = SignUp()
+        driver = WebDriver().driver()
         print("\nStarting on boarding test")
 
         # Creates a new account and tests if special characters can be used
@@ -63,7 +62,12 @@ class OnBoardingTest(unittest.TestCase):
             driver.find_element_by_name("OK").click()  # For Galaxy phones
         except Exception:
             pass
-        s.profile_picture_done().click(), sleep(3)
+        try:
+            m.profile_picture_done().click(), sleep(3)
+        except Exception:
+            for i in range(2):
+                driver.press_keycode(4), sleep(1)  # If none of the above works, go back
+            s.skip_button()
         s.OK_button().click()
         s.skip_button().click()
         s.done_button().click()
