@@ -230,7 +230,7 @@ class Home:
     def blast_friends(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_tab_friends")))
 
-    def blast_recipient(self, user):
+    def username(self, user):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, user)))
 
     def blast_Ok_button(self):
