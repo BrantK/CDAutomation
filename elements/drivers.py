@@ -85,7 +85,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "done")))
 
     def profile_picture_done(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
+        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
 
     def camera_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
@@ -115,6 +115,30 @@ class Home:
 
     def blasts_tab(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, 'BLASTS')))
+
+    def blast_lists(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Blast Lists")))
+
+    def blast_list_field(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/name_edit_text")))
+
+    def blast_list_expand(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "WebDriverWait com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator")))
+
+    def blast_list_edit(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_groups_list_item_edit_action")))
+
+    def blast_list_more(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.ImageButton")))
+
+    def rename_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Rename list")))
+
+    def rename_blast_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.EditText")))
+
+    def delete_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Delete list")))
 
     def groups_tab(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, 'GROUPS')))
@@ -161,12 +185,6 @@ class Home:
     def photo_pen(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/pen")))
 
-    def photo_add_text(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_add_text")))
-
-    def photo_add_text_field(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/edit_text_overlay")))
-
     def photo_color(self):
         return  WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/picker")))
 
@@ -179,8 +197,35 @@ class Home:
     def location_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/location")))
 
+    def text_location_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/actionbar_blast_pin")))
+
+    def current_location(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Current Location")))
+
+    def add_text(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_add_text")))
+
+    def add_text_field(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/edit_text_overlay")))
+
     def next_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_next")))
+
+    def make_public(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_public_button_check")))
+
+    def blast_all_followers(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_followers_button_plus")))
+
+    def blast_all_friends(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_friends_button_plus")))
+
+    def create_blast_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Create Blast List")))
+
+    def send_to_blast_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_check")))
 
     def blast_friends(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_tab_friends")))
@@ -199,6 +244,12 @@ class Home:
 
     def back_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
+
+    def confirm(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
+
+    def cancel(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
 
 
 class More:
@@ -233,7 +284,7 @@ class More:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
     def profile_picture_done(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
+        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
 
     def enter_bio(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_fragment_bio")))
