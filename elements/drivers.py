@@ -364,3 +364,14 @@ class More:
     def cancel(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
 
+    def enter_old_password(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/change_password_fragment_oldpass_edit_text")))
+
+    def enter_new_password(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/change_password_fragment_newpass_edit_text")))
+
+    def confirm_new_password(self):
+       return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")))
+
+    def change_password_ok_button(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/spinner_button_text_view")))
