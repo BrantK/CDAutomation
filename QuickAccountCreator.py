@@ -1,13 +1,15 @@
 # Creates an account
 
 import unittest
-import cd_elements.elements as myDriver
-from cd_elements.elements import SignUp
 from time import sleep
+from elements.drivers import WebDriver, SignUp
+from appium.webdriver.common.touch_action import TouchAction as ta
 
-account_name = "testuser02"
-account_pw = "testuser02"
-account_email = "testuser_01@cyberdust.com"
+driver = WebDriver().driver()
+
+account_name = "testuser999"
+account_pw = "testuser999"
+account_email = "testuser999@cyberdust.com"
 
 
 class AccountCreator(unittest.TestCase):
@@ -19,15 +21,12 @@ class AccountCreator(unittest.TestCase):
         s.pick_username().send_keys(account_name)
         s.sign_up_OK().click()
         s.create_password().send_keys(account_pw)
-        s.confirm_password().click()
         s.confirm_password().send_keys(account_pw)
         s.password_OK().click()
         s.birthday().click(), sleep(2)
 
-        # Scrolls through and sets birthday
-        for i in range(7):
-            myDriver.driver.scroll(s.bday_scroll_1(), s.bday_scroll_2())
-        s.birthday_set().click()
+        ta(driver).long_press(x=s.date().location['x'], y=s.date().location['y'], duration=3000).release().perform()
+        s.birthday_done().click()
         s.birthday_OK().click()
 
         # Enters email
@@ -36,12 +35,10 @@ class AccountCreator(unittest.TestCase):
         s.OK_button().click()
 
         # Skips remaining on boarding
-        for i in range(3):
+        for i in range(2):
             s.skip_button().click()
         s.done_button().click()
 
-
-# ---START OF SCRIPT
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(AccountCreator)
     unittest.TextTestRunner(verbosity=2).run(suite)
