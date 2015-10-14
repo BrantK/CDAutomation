@@ -1,11 +1,11 @@
 # Elements organized by class
 
 import sys
-from sys import argv
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from appium.webdriver.common.touch_action import TouchAction as ta
 
 # Desired capabilities
 desired_caps = {
@@ -36,6 +36,45 @@ class WebDriver:
         global driver
         driver = webdriver.Remote('http://127.0.0.1:'+str(port)+'/wd/hub', desired_caps)
         return driver
+
+
+# Checks to see if a specified account is logged in, then logs in or continues script
+class LoginWith:
+    def user(self, account, password, driver):
+        m = More()
+        tbc = ec.element_to_be_clickable
+        already_logged_in = False
+
+        try:
+            WebDriverWait(driver, 5).until(tbc((By.ID, "com.radicalapps.cyberdust:id/splash_screen_login_button")))
+            logged_out = True
+        except Exception:
+            logged_out = False
+
+        if logged_out is False:
+            m.more_button().click()
+            try:
+                WebDriverWait(driver, 1).until(tbc((By.NAME, account)))
+                already_logged_in = True
+            except Exception:
+                already_logged_in = False
+                pass
+
+        if already_logged_in is True and logged_out is False:
+            print("[Login] Already logged in as %s" % account)
+            m.back_button().click()
+        elif already_logged_in is False and logged_out is False:
+            logged_out = True
+            driver.scroll(m.followers(), m.back_button())
+            m.logout().click()
+            m.confirm().click()
+
+        if already_logged_in is False and logged_out is True:
+            print("[Login] Logging in as %s" % account)
+            m.login_button().click()
+            m.login_username().send_keys(account)
+            m.login_password().send_keys(password)
+            m.login_OK().click()
 
 
 class SignUp:
@@ -116,14 +155,21 @@ class Home:
     def blasts_tab(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, 'BLASTS')))
 
+    def blast_preview_card(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/preview_text")))
+
     def blast_lists(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "Blast Lists")))
+
+    def create_new_blast_list(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/create_button")))
 
     def blast_list_field(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/name_edit_text")))
 
     def blast_list_expand(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "WebDriverWait com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator")))
+        el = WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.ExpandableListView[@index='0'][android.widget.RelativeLayout]")))
+        ta(driver).press(x=el.location['x'], y=el.location['y']).release().perform()
 
     def blast_list_edit(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_groups_list_item_edit_action")))
@@ -230,6 +276,21 @@ class Home:
     def blast_friends(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_tab_friends")))
 
+    def swipe_view_add(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/add_friend")))
+
+    def swipe_view_cancel(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/cancel")))
+
+    def swipe_view_url_card(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.LinearLayout[@index='0'][android.widget.LinearLayout[@index='1']]")))
+
+    def swipe_view_location(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/page_frag_location")))
+
+    def name(self, name):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, name)))
+
     def username(self, user):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, user)))
 
@@ -243,7 +304,7 @@ class Home:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "done")))
 
     def back_button(self):
-        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, "android:id/home")))
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/home")))
 
     def confirm(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button1")))
