@@ -112,7 +112,7 @@ class OnBoardingTest(unittest.TestCase):
 
         # Deletes account
         m.more_button().click(), sleep(1)
-        driver.scroll(m.friends(), m.back_button())
+        driver.scroll(m.followers(), m.back_button())
         m.delete_account().click()
         m.confirm().click()
         print("\nAccount deleted")
