@@ -1,6 +1,7 @@
 # Elements organized by class
 
 import sys
+import logging
 from appium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -14,6 +15,28 @@ desired_caps = {
     'deviceName'     : '',
     'appPackage'     : 'com.radicalapps.cyberdust',
     'appActivity'    : 'com.radicalapps.cyberdust.activities.LauncherActivity'}
+
+
+# Use log("text_here") to print a log to the console and to a log file in the root directory
+def log(msg):
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    # Writes to console
+    handler = logging.StreamHandler()
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s [%(module)s]: %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.info(msg)
+
+    # Writes log to folder that module is in
+    handler = logging.FileHandler("android_test.log")
+    handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s [%(module)s]: %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.debug(msg)
 
 
 # Set the port and unique device id from the command line with -p and -udid or set it inside the test script
