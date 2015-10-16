@@ -77,6 +77,7 @@ class LoginWith:
             m.login_OK().click()
 
 
+# Elements for on boarding
 class SignUp:
     def sign_up_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_signup_button")))
@@ -133,6 +134,7 @@ class SignUp:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.XPATH, "//android.widget.NumberPicker[@index='2'][android.widget.Button]")))
 
 
+# Elements for the "Home" page of the app
 class Home:
     def login_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_login_button")))
@@ -288,6 +290,36 @@ class Home:
     def swipe_view_location(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/page_frag_location")))
 
+    def swipe_view_text(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/text_overlay")))
+
+    def swipe_view_reblast(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/page_frag_reblast")))
+
+    def swipe_view_reply(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/reply_box")))
+
+    def swipe_view_reply_send(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/reply_send")))
+
+    def swipe_view_reply_media(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/reply_media")))
+
+    def swipe_view_reply_monkey(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/reply_monkey")))
+
+    def swipe_view_monkey(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/emoji_image")))
+
+    def swipe_view_emoji_cancel(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/emoji_cancel")))
+
+    def swipe_view_photo_send(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_next")))
+
+    def swipe_view_exit(self):
+        return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/exit_button")))
+
     def name(self, name):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.NAME, name)))
 
@@ -313,6 +345,7 @@ class Home:
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
 
 
+# Elements for the "More" page of the app
 class More:
     def login_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/splash_screen_login_button")))
