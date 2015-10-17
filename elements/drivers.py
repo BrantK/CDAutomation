@@ -130,7 +130,7 @@ class SignUp:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_screen_4_1_profile_pic_layout")))
 
     def sign_up_OK(self, wait=30):
-        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_1_ok_button")))
 
     def password_OK(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/onboarding_2_ok_button")))
@@ -151,7 +151,7 @@ class SignUp:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "done")))
 
     def profile_picture_done(self, wait=30):
-        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
 
     def camera_button(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Camera")))
@@ -407,7 +407,7 @@ class More:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Camera")))
 
     def profile_picture_done(self, wait=30):
-        return WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")))
 
     def enter_bio(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_fragment_bio")))
