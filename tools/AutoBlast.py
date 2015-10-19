@@ -8,7 +8,7 @@ driver = WebDriver().driver()
 
 blast_recipient = "bktest01"
 blast_type = "photo, video, text"  # Use photo, video, text, or a combination of the 3
-blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com"  # Only works for blast_type
+blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com"  # Only works for text blasts
 number_of_blasts = 3  # Number of blasts per type
 
 
@@ -22,7 +22,7 @@ class AutoBlast(unittest.TestCase):
             h.photo_button().click()
             h.next_button().click()
             h.blast_friends().click()
-            h.blast_recipient(blast_recipient).click()
+            h.username(blast_recipient).click()
             h.blast_Ok_button().click()
 
         def video_blast():
@@ -32,7 +32,7 @@ class AutoBlast(unittest.TestCase):
             ta(driver).long_press(h.photo_button(), duration=8000).release().perform()
             h.next_button().click()
             h.blast_friends().click()
-            h.blast_recipient(blast_recipient).click()
+            h.username(blast_recipient).click()
             h.blast_Ok_button().click()
 
         def text_blast():
@@ -41,7 +41,7 @@ class AutoBlast(unittest.TestCase):
             h.dust_blast_field().send_keys(blast_text)
             h.OK_button().click()
             h.blast_friends().click()
-            h.blast_recipient(blast_recipient).click()
+            h.username(blast_recipient).click()
             h.blast_Ok_button().click()
 
         for i in range(number_of_blasts):
