@@ -73,7 +73,7 @@ class BlastTest:
         h.OK_button().click()
         h.back_button().click()
 
-    def test_sending_photo_blasts(self):
+    def test_sending_photo_blast_01(self):
         # Sends photo blast with drawing and URL to all followers
         log("Sending photo blast with drawing and text to all followers")
         h.action_menu().click()
@@ -92,6 +92,7 @@ class BlastTest:
         h.blast_all_followers().click()
         h.blast_Ok_button().click()
 
+    def test_sending_photo_blast_02(self):
         # Sends non public photo blast with +username to the new blast list
         log("Sending non public photo blast")
         h.action_menu().click()
@@ -114,7 +115,7 @@ class BlastTest:
         h.delete_list().click()
         h.confirm().click()
 
-    def test_sending_video_blasts(self):
+    def test_sending_giphy_blast(self):
         # Sends text blast with giphy to a single friend
         log("Sending giphy")
         h.action_menu().click()
@@ -125,6 +126,7 @@ class BlastTest:
         h.username(account02).click()
         h.blast_Ok_button().click()
 
+    def test_sending_video_blast_01(self):
         # Takes video, adds +username, creates blast list, then sends to that blast list
         log("Sending video to newly created blast list")
         h.action_menu().click()
@@ -144,6 +146,7 @@ class BlastTest:
         h.send_to_blast_list().click()
         h.blast_Ok_button().click()
 
+    def test_sending_video_blast_02(self):
         # Takes video, adds URL, then sends to single friend
         log("Sending video with URL")
         h.action_menu().click()
@@ -158,6 +161,7 @@ class BlastTest:
         h.username(account02).click()
         h.blast_Ok_button().click()
 
+    def test_sending_text_for_replies(self):
         # Sends text blast for reply test on other account
         log("Sending text blast for reply test")
         h.action_menu().click()
@@ -190,11 +194,9 @@ class BlastTest:
         h.swipe_view_add().click(), sleep(2)
         h.swipe_view_url_card().click(), sleep(4)
         h.back_button().click(), sleep(1)
-
-    def test_opening_photo_blast(self):
-        # swipes to next blast
         driver.swipe(sw*.800, sh*.300, sw*.100, sh*.300, 300)
 
+    def test_opening_photo_blast(self):
         # Opens photo with drawing and URL
         try:
             sleep(3)
@@ -207,6 +209,7 @@ class BlastTest:
 
         driver.swipe(sw*.800, sh*.300, sw*.100, sh*.300, 300)
 
+    def test_opening_non_public_blast(self):
         # Opens non public photo blast with +username
         try:
             sleep(4)
@@ -219,6 +222,7 @@ class BlastTest:
 
         driver.swipe(sw*.800, sh*.300, sw*.100, sh*.300, 300)
 
+    def test_opening_giphy_blast(self):
         # Checks if giphy was received
         try:
             sleep(3)
@@ -227,11 +231,10 @@ class BlastTest:
                 log("Giphy loaded successfully")
         except Exception:
             log("Giphy was not found", "Warning")
-
-    def test_opening_video_blast(self):
         sleep(1)
         driver.swipe(sw*.800, sh*.300, sw*.100, sh*.300, 300)
 
+    def test_opening_video_blast(self):
         # Opens video with +username
         try:
             sleep(4)
@@ -275,7 +278,7 @@ class BlastTest:
         h.video_button().click()
         ta(driver).long_press(h.photo_button(), duration=5000).release().perform()
         h.swipe_view_photo_send().click(), sleep(4)
-        h.swipe_view_exit().click()
+        driver.press_keycode(4)
 
     def test_checking_blast_replies(self):
         # Login with account01 to check replies
