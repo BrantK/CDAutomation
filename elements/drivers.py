@@ -1,4 +1,4 @@
-# Elements organized by class
+# Testing methods and elements organized by class
 
 import os
 import sys
