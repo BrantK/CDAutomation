@@ -4,7 +4,7 @@ from elements.drivers import Home, log
 from tests.blasts.test_methods import BlastTest
 
 h = Home()
-log("Starting Blast test", "Start")
+log("Starting blasts test", "Start")
 
 try:
     BlastTest().test_sending_text_blasts()

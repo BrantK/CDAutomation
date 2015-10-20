@@ -298,4 +298,4 @@ class BlastTest:
         sleep(1)
         driver.press_keycode(4)
 
-        log("Blast test finished", "Complete")
+        log("blasts test finished", "Complete")

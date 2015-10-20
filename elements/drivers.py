@@ -190,7 +190,7 @@ class Home:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/preview_text")))
 
     def blast_lists(self, wait=30):
-        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Blast Lists")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "blasts Lists")))
 
     def create_new_blast_list(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/create_button")))
@@ -299,7 +299,7 @@ class Home:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/blast_friends_button_plus")))
 
     def create_blast_list(self, wait=30):
-        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Create Blast List")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Create blasts List")))
 
     def send_to_blast_list(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/action_check")))
@@ -372,6 +372,22 @@ class Home:
 
     def cancel(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "android:id/button2")))
+
+    def chat_room_text_box(self, wait = 30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/chat_room_fragment_text_box")))
+
+    def chat_room_send_button(self, wait = 30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/chat_room_fragment_send_button")))
+
+    def sent_text_blast(self, wait = 30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/chat_bubble_view_message_text")))
+
+    def pinned_message(self, wait = 30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/pinned_message_text")))
+
+    def tap_to_unpin_button(self, wait = 30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/tap_to_unpin")))
+
 
 
 # Elements for the "More" page of the app
