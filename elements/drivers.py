@@ -41,7 +41,6 @@ def log(msg, mod=os.path.basename(sys.argv[0])[:-3]):
     logger.debug(msg)
     logger.removeHandler(handler)
 
-
 # Set the port and unique device id from the command line with -p and -udid or set it inside the test script
 class WebDriver:
     def __init__(self, DefaultPort=4723):
@@ -99,6 +98,7 @@ class LoginWith:
             log("Logging in as %s" % account, "Login")
             m.login_button().click()
             m.login_username().send_keys(account)
+            m.login_password().click()
             m.login_password().send_keys(password)
             m.login_OK().click()
 
@@ -271,7 +271,7 @@ class Home:
     def video_button(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "VIDEO")))
 
-    def location_button(self, wait=30):
+    def photo_location_button(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/location")))
 
     def text_location_button(self, wait=30):
