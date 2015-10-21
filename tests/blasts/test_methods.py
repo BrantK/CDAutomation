@@ -23,21 +23,20 @@ driver = WebDriver().driver()
 sw = driver.get_window_size()['width']
 sh = driver.get_window_size()['height']
 
+# Logs into blast testing account
+LoginWith().user(account01, password01, driver)
 
 class BlastTest:
     def test_sending_text_blasts(self):
-        # Logs into blast testing account
-        LoginWith().user(account01, password01, driver)
-
         # Creates a blast list
         h.blast_lists().click(), sleep(2)
-        log("Creating new blast list")
+        log("Creating a blast list")
         try:
             if driver.find_element_by_id("com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator"):
                 h.blast_list_expand()  # Doesn't need .click() attribute
                 h.blast_list_edit().click()
                 h.blast_list_more().click()
-                log("Deleting old blast list first")
+                log("Deleting pre-existing blast list first")
                 h.delete_list().click()
                 h.confirm().click()
                 h.blast_lists().click()
@@ -84,7 +83,7 @@ class BlastTest:
                      h.photo_pen().location['x'], h.photo_pen().location['y']+50)
         h.photo_color().click()
         driver.swipe(h.next_button().location['x']+100, h.next_button().location['y']-50,
-                     h.location_button().location['x']+50, h.location_button().location['y']+50)
+                     h.photo_location_button().location['x']+50, h.photo_location_button().location['y']+50)
         h.add_text().click()
         h.add_text_field().send_keys(blast_url)
         h.done_button().click()
@@ -187,7 +186,7 @@ class BlastTest:
 
         # Opens text blast with +username, URL, and location
         log("Opening text blast and checking +username, URL, and location")
-        h.name(account01).click(), sleep(2)  # change to account01
+        h.name(account01).click(), sleep(2)
         h.swipe_view_location().click(), sleep(3),
         driver.press_keycode(4), sleep(2)
         ta(driver).press(x=sw * .17, y=sh * .23).release().perform()  # clicks +username
@@ -300,5 +299,3 @@ class BlastTest:
             log("All replies were not received", "Warning")
         sleep(1)
         driver.press_keycode(4)
-
-        log("blasts test finished", "Complete")

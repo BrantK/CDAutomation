@@ -4,7 +4,7 @@ from elements.drivers import Home, log
 from tests.blasts.test_methods import BlastTest, driver
 
 h = Home()
-log("Starting blasts test", "Start")
+log("Starting blast test", "Start")
 
 
 def relaunch():
@@ -117,3 +117,5 @@ except Exception as e:
     log(e, "Expression")
     relaunch()
     pass
+
+log("Blast test finished", "Complete")
