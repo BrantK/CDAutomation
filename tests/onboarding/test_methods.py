@@ -18,8 +18,6 @@ driver = WebDriver().driver()
 class OnBoardingTest:
     # Checks if an account is logged in then logs out
     def check_if_logged_out(self):
-        already_logged_in = False
-
         try:
             s.sign_up_button(5)
             logged_out = True
@@ -27,19 +25,10 @@ class OnBoardingTest:
             logged_out = False
 
         if logged_out is False:
-            m.more_button().click()
-            try:
-                s.name(account_name, 2)
-                already_logged_in = True
-            except Exception:
-                already_logged_in = False
-                pass
-
-        if already_logged_in is False and logged_out is False:
-            logged_out = True
+            m.more_button().click(), sleep(1)
             driver.scroll(m.followers(), m.back_button())
             m.logout().click()
-            log("Logging out of current account")
+            log("Logging out before starting test")
             m.confirm().click()
 
     def test_sign_up(self):
@@ -93,6 +82,10 @@ class OnBoardingTest:
         except Exception:
             pass
         try:
+            driver.find_element_by_id("com.android.camera2:id/done_button").click()  # For Nexus phones
+        except Exception:
+            pass
+        try:
             m.profile_picture_done(5).click(), sleep(3)
         except Exception:
             log("Could not take a photo, going back", "Warning")
@@ -127,6 +120,10 @@ class OnBoardingTest:
             pass
         try:
             driver.find_element_by_name("OK").click()  # For Galaxy phones
+        except Exception:
+            pass
+        try:
+            driver.find_element_by_id("com.android.camera2:id/done_button").click()  # For Nexus phones
         except Exception:
             pass
         m.profile_picture_done().click(), sleep(3)
