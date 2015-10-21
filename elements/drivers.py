@@ -189,8 +189,23 @@ class Home:
     def blast_preview_card(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/preview_text")))
 
+    def blast_more_button(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/more_button")))
+
+    def blast_more_mute(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "mute blasts")))
+
+    def blast_more_delete(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "delete blast")))
+
+    def blast_more_block(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "block user")))
+
+    def blast_more_cancel(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "cancel")))
+
     def blast_lists(self, wait=30):
-        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "blasts Lists")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Blast Lists")))
 
     def create_new_blast_list(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/create_button")))
