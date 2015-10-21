@@ -35,13 +35,11 @@ class OnBoardingTest:
                 already_logged_in = False
                 pass
 
-        if already_logged_in is True and logged_out is False:
-            log("Logging out of current account")
-            m.back_button().click()
-        elif already_logged_in is False and logged_out is False:
+        if already_logged_in is False and logged_out is False:
             logged_out = True
             driver.scroll(m.followers(), m.back_button())
             m.logout().click()
+            log("Logging out of current account")
             m.confirm().click()
 
     def test_sign_up(self):
@@ -103,8 +101,7 @@ class OnBoardingTest:
             s.skip_button()
         log("Skipping checking contacts and sending text message")
         s.OK_button().click()
-        for i in range(2):
-            s.skip_button().click()
+        s.skip_button().click()
         s.done_button().click()
         log("New account, %s, created" % account_name)
 
@@ -137,7 +134,7 @@ class OnBoardingTest:
 
     def test_logout_login(self):
         # Logout and login
-        log("Testing logging out and back in")
+        log("Testing logout and login")
         driver.scroll(m.friends(), m.back_button())
         m.logout().click()
         m.confirm().click()
