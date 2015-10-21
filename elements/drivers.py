@@ -386,7 +386,7 @@ class Home:
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/pinned_message_text")))
 
     def tap_to_unpin_button(self, wait = 30):
-        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/tap_to_unpin")))
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, "Tap message to unpin")))
 
 
 

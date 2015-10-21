@@ -8,7 +8,7 @@ log("Starting blasts test", "Start")
 try:
     MessagePinning_test().test_pinning_messages()
 except Exception as e:
-    log("When sending text blasts", "Error")
+    log("When pinning messages", "Error")
     log(e, "Expression")
     h.back_button().click()
     pass
