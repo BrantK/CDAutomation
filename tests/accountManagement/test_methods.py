@@ -64,6 +64,7 @@ class Account_Management_test:
 
     def test_account_deleting(self):
         log("Deleting")
+        m.more_button().click()
         driver.scroll(m.change_email_address(), m.back_button())
         m.delete_account().click()
         m.confirm().click()
