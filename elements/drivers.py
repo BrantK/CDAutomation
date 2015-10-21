@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 import logging
 from appium import webdriver
 from selenium.webdriver.common.by import By
@@ -33,7 +34,7 @@ def log(msg, mod=os.path.basename(sys.argv[0])[:-3]):
     logger.removeHandler(handler)
 
     # Prints log to folder that module is in
-    handler = logging.FileHandler(os.path.basename(sys.argv[0])[:-3]+".log")
+    handler = logging.FileHandler(os.path.basename(sys.argv[0])[:-3]+str(time.strftime('_%m-%d-%Y'))+".log")
     handler.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s ['+mod+']: %(message)s', datefmt='%m/%d/%Y %I:%M:%S')
     handler.setFormatter(formatter)
