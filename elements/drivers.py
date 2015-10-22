@@ -533,3 +533,6 @@ class More:
 
     def change_password_ok_button(self):
         return WebDriverWait(driver, 30).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/spinner_button_text_view")))
+
+    def new_email_text_box(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")))
