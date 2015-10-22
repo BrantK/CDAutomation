@@ -236,6 +236,9 @@ class Home:
     def groups_tab(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.NAME, 'GROUPS')))
 
+    def groups_title_field(self, wait=30):
+        return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "android:id/custom")))
+
     def card_view(self, wait=30):
         return WebDriverWait(driver, wait).until(ec.element_to_be_clickable((By.ID, "com.radicalapps.cyberdust:id/card_view")))
 
